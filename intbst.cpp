@@ -128,13 +128,13 @@ T IntBST<T>::sum(Node *n) const {
 
 template <class T>
 // return count of values
-T IntBST<T>::count() const {
+int IntBST<T>::count() const {
     return count(root);
 }
 
 template <class T>
 // recsive helper for count
-T IntBST<T>::count(Node *n) const {
+int IntBST<T>::count(Node *n) const {
     if(n){
         return 1 + count(n->left) + count(n->right);
     }
