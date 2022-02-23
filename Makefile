@@ -3,8 +3,8 @@ CXX_FLAG = --std=c++11 -g
 
 all: testbst
 
-testbst: testBST.o
-	g++ $(CXX_FLAG) -o testBST testBST.o
+testbst: testbst.o
+	g++ $(CXX_FLAG) -o testbst testbst.o
 
 clean:
-	rm -f testBST *.o
+	rm -f testbst *.o

@@ -1,7 +1,7 @@
 // testbst.cpp
 // Tests intbst.cpp for CS 24 lab
 
-#include "IntBST.h"
+#include "intbst.h"
 #include <vector>
 #include <iostream>
 using namespace std;
@@ -40,6 +40,7 @@ int main() {
     printElements(intBST);
     printElements(charBST);
     printElements(doubleBST);
+
 
     // // insert data to bst1
     // bst1.insert(64);
