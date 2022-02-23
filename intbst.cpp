@@ -2,7 +2,7 @@
 // Implements class IntBST
 // Nik Belle 5564083
 // Mihir Bharti 5149646
-// 2/**/22
+// 2/22/22
 
 #include <iostream>
 using std::cout;

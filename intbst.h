@@ -1,3 +1,7 @@
+// Nik Belle 5564083
+// Mihir Bharti 5149646
+// 2/22/22
+
 #ifndef INTBST_H
 #define INTBST_H
 
