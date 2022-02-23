@@ -105,8 +105,8 @@ void IntBST<T>::printPostOrder() const {
 template <class T>
 void IntBST<T>::printPostOrder(Node *n) const {
     if(n){
-        printInOrder(n->left);
-        printInOrder(n->right);
+        printPostOrder(n->left);
+        printPostOrder(n->right);
         cout << n->info << " ";
     }
 }
