@@ -192,7 +192,7 @@ typename IntBST<T>::Node* IntBST<T>::getPredecessorNode(T value) const{
             }
 
             else if(n->parent->left == n){
-                int val = n->info;
+                T val = n->info;
                 while(n->parent != root && n->parent->left == n){
                     n = n->parent;
                 }
@@ -238,7 +238,7 @@ typename IntBST<T>::Node* IntBST<T>::getSuccessorNode(T value) const{
             }
 
             else if(n->parent->right == n){
-                int val = n->info;
+                T val = n->info;
                 while(n->parent != root && n->parent->right == n){
                     n = n->parent;
                 }
@@ -321,7 +321,7 @@ bool IntBST<T>::remove(T value){
         }
 
         else {
-            int successor = getSuccessor(value);
+            T successor = getSuccessor(value);
             remove(successor);
             n->info = successor;
         }
