@@ -4,17 +4,15 @@
 // Mihir Bharti 5149646
 // 2/**/22
 
-#include "genericBST.h"
-
 #include <iostream>
 using std::cout;
 using std::endl;
 
 template <class T>
-
 // constructor sets up empty tree
 IntBST<T>::IntBST() : root(nullptr) { }
 
+template <class T>
 // destructor deletes all nodes
 IntBST<T>::~IntBST() {
     clear(root);
@@ -115,13 +113,13 @@ void IntBST<T>::printPostOrder(Node *n) const {
 
 template <class T>
 // return sum of values in tree
-int IntBST<T>::sum() const {
+T IntBST<T>::sum() const {
     return sum(root);
 }
 
 template <class T>
 // recsive helper for sum
-int IntBST<T>::sum(Node *n) const {
+T IntBST<T>::sum(Node *n) const {
     if(n){
         return n->info + sum(n->left) + sum(n->right);
     }
@@ -130,13 +128,13 @@ int IntBST<T>::sum(Node *n) const {
 
 template <class T>
 // return count of values
-int IntBST<T>::count() const {
+T IntBST<T>::count() const {
     return count(root);
 }
 
 template <class T>
 // recsive helper for count
-int IntBST<T>::count(Node *n) const {
+T IntBST<T>::count(Node *n) const {
     if(n){
         return 1 + count(n->left) + count(n->right);
     }
@@ -149,127 +147,128 @@ int IntBST<T>::count(Node *n) const {
 // Node* n: the node to start with (for a recsive call)
 // Whenever you call this method from somewhere else, pass it
 // the root node as "n"
-template <class T>
-IntBST<T>::Node* IntBST::getNodeFor(int value, Node* n) const{
-    if(n){
-        if(n->info == value){
-            return n;
-        }
-        else if(n->info < value){
-            return getNodeFor(value, n->right);
-        }
-        else if(n->info > value){
-            return getNodeFor(value, n->left);
-        }
-    }
-    return NULL;
+
+// template <class T>
+// IntBST<T>::Node* IntBST<T>::getNodeFor(T value, Node* n) const{
+//     if(n){
+//         if(n->info == value){
+//             return n;
+//         }
+//         else if(n->info < value){
+//             return getNodeFor(value, n->right);
+//         }
+//         else if(n->info > value){
+//             return getNodeFor(value, n->left);
+//         }
+//     }
+//     return NULL;
     
-}
+// }
 
 template <class T>
 // returns true if value is in the tree; false if not
-bool IntBST<T>::contains(int value) const {
+bool IntBST<T>::contains(T value) const {
     if(getNodeFor(value, root) != NULL){
         return true;
     }
     return false;
 }
 
-template <class T>
-// returns the Node containing the predecessor of the given value
-IntBST<T>::Node* IntBST::getPredecessorNode(int value) const{
-    Node* n = getNodeFor(value, root);
-    if(n != NULL){
-        if(n->left != NULL){
-            n = n->left;
-            while(n->right){
-                n = n->right;
-            }
-            return n;
-        }
-        else{
-            if(n->parent->right == n){
-                return n->parent;
-            }
+// template <class T>
+// // returns the Node containing the predecessor of the given value
+// IntBST<T>::Node<T>* IntBST<T>::getPredecessorNode(T value) const{
+//     Node* n = getNodeFor(value, root);
+//     if(n != NULL){
+//         if(n->left != NULL){
+//             n = n->left;
+//             while(n->right){
+//                 n = n->right;
+//             }
+//             return n;
+//         }
+//         else{
+//             if(n->parent->right == n){
+//                 return n->parent;
+//             }
 
-            else if(n->parent->left == n){
-                int val = n->info;
-                while(n->parent != root && n->parent->left == n){
-                    n = n->parent;
-                }
-                if(n->parent->info < val){
-                    n = n->parent;
-                }
-                else{
-                    return NULL;
-                }
-                return n;
+//             else if(n->parent->left == n){
+//                 int val = n->info;
+//                 while(n->parent != root && n->parent->left == n){
+//                     n = n->parent;
+//                 }
+//                 if(n->parent->info < val){
+//                     n = n->parent;
+//                 }
+//                 else{
+//                     return NULL;
+//                 }
+//                 return n;
                 
-            }
-        }
-    }
-    return NULL;
-}
+//             }
+//         }
+//     }
+//     return NULL;
+// }
 
-template <class T>
-// returns the predecessor value of the given value or 0 if there is none
-int IntBST<T>::getPredecessor(int value) const{
-    if(getPredecessorNode(value)){
-        return getPredecessorNode(value)->info;
-    }
-    return 0;
+// template <class T>
+// // returns the predecessor value of the given value or 0 if there is none
+// T IntBST<T>::getPredecessor(T value) const{
+//     if(getPredecessorNode(value)){
+//         return getPredecessorNode(value)->info;
+//     }
+//     return 0;
     
-}
+// }
 
-template <class T>
-// returns the Node containing the successor of the given value
-IntBST<T>::Node* IntBST::getSuccessorNode(int value) const{
-    Node* n = getNodeFor(value, root);
-    if(n != NULL){
-        if(n->right != NULL){
-            n = n->right;
-            while(n->left){
-                n = n->left;
-            }
-            return n;
-        }
-        else{
-            if(n->parent->left == n){
-                return n->parent;
-            }
+// template <class T>
+// // returns the Node containing the successor of the given value
+// IntBST<T>::Node* IntBST<T>::getSuccessorNode(T value) const{
+//     Node* n = getNodeFor(value, root);
+//     if(n != NULL){
+//         if(n->right != NULL){
+//             n = n->right;
+//             while(n->left){
+//                 n = n->left;
+//             }
+//             return n;
+//         }
+//         else{
+//             if(n->parent->left == n){
+//                 return n->parent;
+//             }
 
-            else if(n->parent->right == n){
-                int val = n->info;
-                while(n->parent != root && n->parent->right == n){
-                    n = n->parent;
-                }
-                if(n->parent->info > val){
-                    n = n->parent;
-                }
-                else{
-                    return NULL;
-                }
-                return n;
+//             else if(n->parent->right == n){
+//                 int val = n->info;
+//                 while(n->parent != root && n->parent->right == n){
+//                     n = n->parent;
+//                 }
+//                 if(n->parent->info > val){
+//                     n = n->parent;
+//                 }
+//                 else{
+//                     return NULL;
+//                 }
+//                 return n;
                 
-            }
-        }
-    }
-    return NULL;
-}
+//             }
+//         }
+//     }
+//     return NULL;
+// }
 
-template <class T>
-// returns the successor value of the given value or 0 if there is none
-int IntBST<T>::getSuccessor(int value) const{
-    if(getSuccessorNode(value)){
-        return getSuccessorNode(value)->info;
-    }
-    return 0;
-}
+// template <class T>
+// // returns the successor value of the given value or 0 if there is none
+// T IntBST<T>::getSuccessor(T value) const{
+//     if(getSuccessorNode(value)){
+//         return getSuccessorNode(value)->info;
+//     }
+//     return 0;
+// }
 
 template <class T>
 // deletes the Node containing the given value from the tree
 // returns true if the node exist and was deleted or false if the node does not exist
-bool IntBST<T>::remove(int value){
+bool IntBST<T>::remove(T value){
     Node* n = getNodeFor(value, root);
     if(n){
         Node* parent = n->parent;
